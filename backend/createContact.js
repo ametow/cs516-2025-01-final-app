@@ -8,7 +8,7 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 //Change the below information according to your deployment
 const REGION = "us-east-1";
 const DYNAMODB_TABLE_NAME = "contacts-618653";
-const S3_BUCKET_NAME = "arsinux-618653";
+const S3_BUCKET_NAME = "final-images-618653";
 
 //DO NOT change the below code as it is working correctly.
 const s3 = new S3Client({ region: REGION });
@@ -22,7 +22,7 @@ export const handler = async (event) => {
     // Generate pre-signed URL
     const uploadParams = {
       Bucket: S3_BUCKET_NAME,
-      Key: "project/"+ filename,
+      Key: filename,
       ContentType: contentType,
     };
     const command = new PutObjectCommand(uploadParams);
@@ -32,7 +32,7 @@ export const handler = async (event) => {
     const item = {
       email: { S: email },
       name: {S: name},
-      image: { S: "project/" + filename }
+      image: { S: filename }
     };
 
     await dynamoDB.send(new PutItemCommand({
