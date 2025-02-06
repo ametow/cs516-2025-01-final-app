@@ -6,9 +6,9 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 - Each contact contains email, name, and image.
  */
 //Change the below information according to your deployment
-const REGION = "target-region";
-const DYNAMODB_TABLE_NAME = "your-table";
-const S3_BUCKET_NAME = "your-bucket";
+const REGION = "us-east-1";
+const DYNAMODB_TABLE_NAME = "contacts-618653";
+const S3_BUCKET_NAME = "arsinux-618653";
 
 //DO NOT change the below code as it is working correctly.
 const s3 = new S3Client({ region: REGION });
