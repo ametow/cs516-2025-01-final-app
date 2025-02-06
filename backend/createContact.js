@@ -22,7 +22,7 @@ export const handler = async (event) => {
     // Generate pre-signed URL
     const uploadParams = {
       Bucket: S3_BUCKET_NAME,
-      Key: filename,
+      Key: "project/"+ filename,
       ContentType: contentType,
     };
     const command = new PutObjectCommand(uploadParams);
@@ -32,7 +32,7 @@ export const handler = async (event) => {
     const item = {
       email: { S: email },
       name: {S: name},
-      image: { S: filename }
+      image: { S: "project/" + filename }
     };
 
     await dynamoDB.send(new PutItemCommand({
